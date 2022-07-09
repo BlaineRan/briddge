@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ran.dao.SuperstructureItemsRelationMapper">
+  <resultMap id="BaseResultMap" type="com.ran.domain.SuperstructureItemsRelation">
+    <!--@mbg.generated-->
+    <!--@Table superstructure_items_relation-->
+    <result column="element_id" jdbcType="INTEGER" property="elementId" />
+    <result column="check_item_id" jdbcType="INTEGER" property="checkItemId" />
+    <result column="bridge_type_id" jdbcType="INTEGER" property="bridgeTypeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    element_id, check_item_id, bridge_type_id
+  </sql>
+  <insert id="insert" parameterType="com.ran.domain.SuperstructureItemsRelation">
+    <!--@mbg.generated-->
+    insert into superstructure_items_relation (element_id, check_item_id, bridge_type_id
+      )
+    values (#{elementId,jdbcType=INTEGER}, #{checkItemId,jdbcType=INTEGER}, #{bridgeTypeId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ran.domain.SuperstructureItemsRelation">
+    <!--@mbg.generated-->
+    insert into superstructure_items_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="elementId != null">
+        element_id,
+      </if>
+      <if test="checkItemId != null">
+        check_item_id,
+      </if>
+      <if test="bridgeTypeId != null">
+        bridge_type_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="elementId != null">
+        #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="checkItemId != null">
+        #{checkItemId,jdbcType=INTEGER},
+      </if>
+      <if test="bridgeTypeId != null">
+        #{bridgeTypeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bridge.superstructure_items_relation
+  </select>
+
+  <select id="selectByElementId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bridge.superstructure_items_relation
+    where element_id = #{elementId,javaType=INTEGER}
+  </select>
+
+  <select id="selectByCheckItemId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bridge.superstructure_items_relation
+    where check_item_id = #{checkItemId,javaType=INTEGER}
+  </select>
+
+  <select id="selectElementIdByBridgeTypeIdAndItemId" resultType="int">
+    select distinct
+      a.element_id
+    from
+      superstructure_items_relation a,
+      bridge.substructure_element_type_relation b
+    where
+      b.bridge_type_id = #{bridgeTypeId,jdbcType=INTEGER} and
+      b.element_id = a.element_id and
+      a.check_item_id = #{checkItemId,jdbcType=INTEGER}
+  </select>
+</mapper>

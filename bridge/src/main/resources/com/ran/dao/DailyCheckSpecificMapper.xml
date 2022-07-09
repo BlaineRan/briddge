@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ran.dao.DailyCheckSpecificMapper">
+  <resultMap id="BaseResultMap" type="com.ran.domain.DailyCheckSpecific">
+    <!--@mbg.generated-->
+    <!--@Table daily_check_specific-->
+    <id column="specific_id" jdbcType="INTEGER" property="specificId" />
+    <id column="daily_check_id" jdbcType="INTEGER" property="dailyCheckId" />
+    <result column="check_item" jdbcType="VARCHAR" property="checkItem" />
+    <result column="complete" jdbcType="VARCHAR" property="complete" />
+    <result column="harm_type" jdbcType="VARCHAR" property="harmType" />
+    <result column="harm_degree" jdbcType="VARCHAR" property="harmDegree" />
+    <result column="harm_pos" jdbcType="VARCHAR" property="harmPos" />
+    <result column="tips" jdbcType="VARCHAR" property="tips" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    specific_id, daily_check_id, check_item, complete, harm_type, harm_degree, harm_pos,
+    tips
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from daily_check_specific
+    where specific_id = #{specificId,jdbcType=INTEGER}
+      and daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from daily_check_specific
+    where specific_id = #{specificId,jdbcType=INTEGER}
+      and daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ran.domain.DailyCheckSpecific">
+    <!--@mbg.generated-->
+    insert into daily_check_specific (specific_id, daily_check_id, check_item,
+      complete, harm_type, harm_degree,
+      harm_pos, tips)
+    values (#{specificId,jdbcType=INTEGER}, #{dailyCheckId,jdbcType=INTEGER}, #{checkItem,jdbcType=VARCHAR},
+      #{complete,jdbcType=VARCHAR}, #{harmType,jdbcType=VARCHAR}, #{harmDegree,jdbcType=VARCHAR},
+      #{harmPos,jdbcType=VARCHAR}, #{tips,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ran.domain.DailyCheckSpecific">
+    <!--@mbg.generated-->
+    insert into daily_check_specific
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="specificId != null">
+        specific_id,
+      </if>
+      <if test="dailyCheckId != null">
+        daily_check_id,
+      </if>
+      <if test="checkItem != null">
+        check_item,
+      </if>
+      <if test="complete != null">
+        complete,
+      </if>
+      <if test="harmType != null">
+        harm_type,
+      </if>
+      <if test="harmDegree != null">
+        harm_degree,
+      </if>
+      <if test="harmPos != null">
+        harm_pos,
+      </if>
+      <if test="tips != null">
+        tips,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="specificId != null">
+        #{specificId,jdbcType=INTEGER},
+      </if>
+      <if test="dailyCheckId != null">
+        #{dailyCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="checkItem != null">
+        #{checkItem,jdbcType=VARCHAR},
+      </if>
+      <if test="complete != null">
+        #{complete,jdbcType=VARCHAR},
+      </if>
+      <if test="harmType != null">
+        #{harmType,jdbcType=VARCHAR},
+      </if>
+      <if test="harmDegree != null">
+        #{harmDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="harmPos != null">
+        #{harmPos,jdbcType=VARCHAR},
+      </if>
+      <if test="tips != null">
+        #{tips,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ran.domain.DailyCheckSpecific">
+    <!--@mbg.generated-->
+    update daily_check_specific
+    <set>
+      <if test="checkItem != null">
+        check_item = #{checkItem,jdbcType=VARCHAR},
+      </if>
+      <if test="complete != null">
+        complete = #{complete,jdbcType=VARCHAR},
+      </if>
+      <if test="harmType != null">
+        harm_type = #{harmType,jdbcType=VARCHAR},
+      </if>
+      <if test="harmDegree != null">
+        harm_degree = #{harmDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="harmPos != null">
+        harm_pos = #{harmPos,jdbcType=VARCHAR},
+      </if>
+      <if test="tips != null">
+        tips = #{tips,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where specific_id = #{specificId,jdbcType=INTEGER}
+      and daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ran.domain.DailyCheckSpecific">
+    <!--@mbg.generated-->
+    update daily_check_specific
+    set check_item = #{checkItem,jdbcType=VARCHAR},
+      complete = #{complete,jdbcType=VARCHAR},
+      harm_type = #{harmType,jdbcType=VARCHAR},
+      harm_degree = #{harmDegree,jdbcType=VARCHAR},
+      harm_pos = #{harmPos,jdbcType=VARCHAR},
+      tips = #{tips,jdbcType=VARCHAR}
+    where specific_id = #{specificId,jdbcType=INTEGER}
+      and daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2022-07-07-->
+  <select id="selectAllByDailyCheckId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from daily_check_specific
+        where daily_check_id=#{dailyCheckId,jdbcType=INTEGER}
+    </select>
+
+  <select id="countMaxPrimaryKey" resultType="int">
+    select max(specific_id)
+    from bridge.daily_check_specific
+  </select>
+</mapper>

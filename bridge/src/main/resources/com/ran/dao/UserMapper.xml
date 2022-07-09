@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ran.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.ran.domain.User">
+        <!--@mbg.generated-->
+        <!--@Table `user`-->
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_type" jdbcType="VARCHAR" property="userType"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="active" jdbcType="VARCHAR" property="active"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        user_id, account, `password`, user_type, avatar, user_name, active
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from `user`
+        where user_id = #{userId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.ran.domain.User">
+        <!--@mbg.generated-->
+        insert into `user` (user_id, account, `password`,
+                            user_type, avatar, user_name, active)
+        values (#{userId,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{userType,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+                #{active,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ran.domain.User">
+        <!--@mbg.generated-->
+        insert into `user`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="account != null">
+                account,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="active != null">
+                active,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                #{active,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ran.domain.User">
+        <!--@mbg.generated-->
+        update `user`
+        <set>
+            <if test="account != null">
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                active = #{active,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ran.domain.User">
+        <!--@mbg.generated-->
+        update `user`
+        set account    = #{account,jdbcType=VARCHAR},
+            `password` = #{password,jdbcType=VARCHAR},
+            user_type  = #{userType,jdbcType=VARCHAR},
+            avatar     = #{avatar,jdbcType=VARCHAR},
+            user_name  = #{userName,jdbcType=VARCHAR},
+            active     = #{active,jdbcType=VARCHAR}
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+    </select>
+
+    <select id="selectUserIdByName" resultType="java.lang.Integer">
+        select user_id
+        from user
+        where user_name = #{userName,jdbcType=VARCHAR}
+    </select>
+</mapper>

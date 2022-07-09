@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ran.dao.BridgeDeckingHarmTypeMapper">
+  <resultMap id="BaseResultMap" type="com.ran.domain.BridgeDeckingHarmType">
+    <!--@mbg.generated-->
+    <!--@Table bridge_decking_harm_type-->
+    <id column="harm_type_id" jdbcType="INTEGER" property="harmTypeId" />
+    <result column="element_id" jdbcType="INTEGER" property="elementId" />
+    <result column="harm_type_name" jdbcType="VARCHAR" property="harmTypeName" />
+    <result column="harm_def" jdbcType="VARCHAR" property="harmDef" />
+    <result column="A_std" jdbcType="VARCHAR" property="aStd" />
+    <result column="B_std" jdbcType="VARCHAR" property="bStd" />
+    <result column="C_std" jdbcType="VARCHAR" property="cStd" />
+    <result column="A_devalue" jdbcType="FLOAT" property="aDevalue" />
+    <result column="B_devalue" jdbcType="FLOAT" property="bDevalue" />
+    <result column="C_devalue" jdbcType="FLOAT" property="cDevalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    harm_type_id, element_id, harm_type_name, harm_def, A_std, B_std, C_std, A_devalue,
+    B_devalue, C_devalue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from bridge_decking_harm_type
+    where harm_type_id = #{harmTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from bridge_decking_harm_type
+    where harm_type_id = #{harmTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ran.domain.BridgeDeckingHarmType">
+    <!--@mbg.generated-->
+    insert into bridge_decking_harm_type (harm_type_id, element_id, harm_type_name,
+      harm_def, A_std, B_std,
+      C_std, A_devalue, B_devalue,
+      C_devalue)
+    values (#{harmTypeId,jdbcType=INTEGER}, #{elementId,jdbcType=INTEGER}, #{harmTypeName,jdbcType=VARCHAR},
+      #{harmDef,jdbcType=VARCHAR}, #{aStd,jdbcType=VARCHAR}, #{bStd,jdbcType=VARCHAR},
+      #{cStd,jdbcType=VARCHAR}, #{aDevalue,jdbcType=FLOAT}, #{bDevalue,jdbcType=FLOAT},
+      #{cDevalue,jdbcType=FLOAT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ran.domain.BridgeDeckingHarmType">
+    <!--@mbg.generated-->
+    insert into bridge_decking_harm_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="harmTypeId != null">
+        harm_type_id,
+      </if>
+      <if test="elementId != null">
+        element_id,
+      </if>
+      <if test="harmTypeName != null">
+        harm_type_name,
+      </if>
+      <if test="harmDef != null">
+        harm_def,
+      </if>
+      <if test="aStd != null">
+        A_std,
+      </if>
+      <if test="bStd != null">
+        B_std,
+      </if>
+      <if test="cStd != null">
+        C_std,
+      </if>
+      <if test="aDevalue != null">
+        A_devalue,
+      </if>
+      <if test="bDevalue != null">
+        B_devalue,
+      </if>
+      <if test="cDevalue != null">
+        C_devalue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="harmTypeId != null">
+        #{harmTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="elementId != null">
+        #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="harmTypeName != null">
+        #{harmTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="harmDef != null">
+        #{harmDef,jdbcType=VARCHAR},
+      </if>
+      <if test="aStd != null">
+        #{aStd,jdbcType=VARCHAR},
+      </if>
+      <if test="bStd != null">
+        #{bStd,jdbcType=VARCHAR},
+      </if>
+      <if test="cStd != null">
+        #{cStd,jdbcType=VARCHAR},
+      </if>
+      <if test="aDevalue != null">
+        #{aDevalue,jdbcType=FLOAT},
+      </if>
+      <if test="bDevalue != null">
+        #{bDevalue,jdbcType=FLOAT},
+      </if>
+      <if test="cDevalue != null">
+        #{cDevalue,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ran.domain.BridgeDeckingHarmType">
+    <!--@mbg.generated-->
+    update bridge_decking_harm_type
+    <set>
+      <if test="elementId != null">
+        element_id = #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="harmTypeName != null">
+        harm_type_name = #{harmTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="harmDef != null">
+        harm_def = #{harmDef,jdbcType=VARCHAR},
+      </if>
+      <if test="aStd != null">
+        A_std = #{aStd,jdbcType=VARCHAR},
+      </if>
+      <if test="bStd != null">
+        B_std = #{bStd,jdbcType=VARCHAR},
+      </if>
+      <if test="cStd != null">
+        C_std = #{cStd,jdbcType=VARCHAR},
+      </if>
+      <if test="aDevalue != null">
+        A_devalue = #{aDevalue,jdbcType=FLOAT},
+      </if>
+      <if test="bDevalue != null">
+        B_devalue = #{bDevalue,jdbcType=FLOAT},
+      </if>
+      <if test="cDevalue != null">
+        C_devalue = #{cDevalue,jdbcType=FLOAT},
+      </if>
+    </set>
+    where harm_type_id = #{harmTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ran.domain.BridgeDeckingHarmType">
+    <!--@mbg.generated-->
+    update bridge_decking_harm_type
+    set element_id = #{elementId,jdbcType=INTEGER},
+      harm_type_name = #{harmTypeName,jdbcType=VARCHAR},
+      harm_def = #{harmDef,jdbcType=VARCHAR},
+      A_std = #{aStd,jdbcType=VARCHAR},
+      B_std = #{bStd,jdbcType=VARCHAR},
+      C_std = #{cStd,jdbcType=VARCHAR},
+      A_devalue = #{aDevalue,jdbcType=FLOAT},
+      B_devalue = #{bDevalue,jdbcType=FLOAT},
+      C_devalue = #{cDevalue,jdbcType=FLOAT}
+    where harm_type_id = #{harmTypeId,jdbcType=INTEGER}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2022-07-07-->
+  <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bridge_decking_harm_type
+    </select>
+
+  <select id="selectHarmTypeByBridgeTypeId" resultMap="BaseResultMap">
+    select distinct
+    harm_type_id, a.element_id, harm_type_name, harm_def, A_std, B_std, C_std, A_devalue,
+    B_devalue, C_devalue
+    from
+    bridge_decking_harm_type a,
+    bridge.bridge_decking_element_type_relation b
+    where
+    b.bridge_type_id = #{bridgeTypeId,jdbcType=INTEGER} and
+    b.element_id = a.element_id
+
+  </select>
+</mapper>

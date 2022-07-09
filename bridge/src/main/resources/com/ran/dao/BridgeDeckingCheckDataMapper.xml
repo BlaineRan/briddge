@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ran.dao.BridgeDeckingCheckDataMapper">
+  <resultMap id="BaseResultMap" type="com.ran.domain.BridgeDeckingCheckData">
+    <!--@mbg.generated-->
+    <!--@Table bridge_decking_check_data-->
+    <id column="check_data_id" jdbcType="INTEGER" property="checkDataId" />
+    <result column="periodic_check_id" jdbcType="INTEGER" property="periodicCheckId" />
+    <result column="element_name" jdbcType="VARCHAR" property="elementName" />
+    <result column="de_value" jdbcType="FLOAT" property="deValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    check_data_id, periodic_check_id, element_name, de_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from bridge_decking_check_data
+    where check_data_id = #{checkDataId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from bridge_decking_check_data
+    where check_data_id = #{checkDataId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ran.domain.BridgeDeckingCheckData">
+    <!--@mbg.generated-->
+    insert into bridge_decking_check_data (check_data_id, periodic_check_id, element_name,
+      de_value)
+    values (#{checkDataId,jdbcType=INTEGER}, #{periodicCheckId,jdbcType=INTEGER}, #{elementName,jdbcType=VARCHAR},
+      #{deValue,jdbcType=FLOAT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ran.domain.BridgeDeckingCheckData">
+    <!--@mbg.generated-->
+    insert into bridge_decking_check_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkDataId != null">
+        check_data_id,
+      </if>
+      <if test="periodicCheckId != null">
+        periodic_check_id,
+      </if>
+      <if test="elementName != null">
+        element_name,
+      </if>
+      <if test="deValue != null">
+        de_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkDataId != null">
+        #{checkDataId,jdbcType=INTEGER},
+      </if>
+      <if test="periodicCheckId != null">
+        #{periodicCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="elementName != null">
+        #{elementName,jdbcType=VARCHAR},
+      </if>
+      <if test="deValue != null">
+        #{deValue,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ran.domain.BridgeDeckingCheckData">
+    <!--@mbg.generated-->
+    update bridge_decking_check_data
+    <set>
+      <if test="periodicCheckId != null">
+        periodic_check_id = #{periodicCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="elementName != null">
+        element_name = #{elementName,jdbcType=VARCHAR},
+      </if>
+      <if test="deValue != null">
+        de_value = #{deValue,jdbcType=FLOAT},
+      </if>
+    </set>
+    where check_data_id = #{checkDataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ran.domain.BridgeDeckingCheckData">
+    <!--@mbg.generated-->
+    update bridge_decking_check_data
+    set periodic_check_id = #{periodicCheckId,jdbcType=INTEGER},
+      element_name = #{elementName,jdbcType=VARCHAR},
+      de_value = #{deValue,jdbcType=FLOAT}
+    where check_data_id = #{checkDataId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bridge_decking_check_data
+  </select>
+</mapper>

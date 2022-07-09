@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ran.dao.DailyCheckRecordMapper">
+  <resultMap id="BaseResultMap" type="com.ran.domain.DailyCheckRecord">
+    <!--@mbg.generated-->
+    <!--@Table daily_check_record-->
+    <id column="daily_check_id" jdbcType="INTEGER" property="dailyCheckId" />
+    <result column="bridge_id" jdbcType="INTEGER" property="bridgeId" />
+    <result column="inprotect_construct" jdbcType="VARCHAR" property="inProtectConstruct" />
+    <result column="other_harm" jdbcType="VARCHAR" property="otherHarm" />
+    <result column="inspector_id" jdbcType="INTEGER" property="inspectorId" />
+    <result column="check_date" jdbcType="VARCHAR" property="checkDate" />
+    <result column="maintain_advice" jdbcType="VARCHAR" property="maintainAdvice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    daily_check_id, bridge_id, inprotect_construct, other_harm, inspector_id, check_date,
+    maintain_advice
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from daily_check_record
+    where daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from daily_check_record
+    where daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ran.domain.DailyCheckRecord">
+    <!--@mbg.generated-->
+      insert into daily_check_record (daily_check_id, bridge_id, inprotect_construct,
+      other_harm, inspector_id, check_date,
+      maintain_advice)
+      values (#{dailyCheckId,jdbcType=INTEGER}, #{bridgeId,jdbcType=INTEGER}, #{inProtectConstruct,jdbcType=VARCHAR},
+      #{otherHarm,jdbcType=VARCHAR}, #{inspectorId,jdbcType=INTEGER}, #{checkDate,jdbcType=VARCHAR},
+      #{maintainAdvice,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ran.domain.DailyCheckRecord">
+    <!--@mbg.generated-->
+    insert into daily_check_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dailyCheckId != null">
+        daily_check_id,
+      </if>
+      <if test="bridgeId != null">
+        bridge_id,
+      </if>
+      <if test="inProtectConstruct != null">
+        inprotect_construct,
+      </if>
+      <if test="otherHarm != null">
+        other_harm,
+      </if>
+      <if test="inspectorId != null">
+        inspector_id,
+      </if>
+      <if test="checkDate != null">
+        check_date,
+      </if>
+      <if test="maintainAdvice != null">
+        maintain_advice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dailyCheckId != null">
+        #{dailyCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="bridgeId != null">
+        #{bridgeId,jdbcType=INTEGER},
+      </if>
+      <if test="inProtectConstruct != null">
+          #{inProtectConstruct,jdbcType=VARCHAR},
+      </if>
+      <if test="otherHarm != null">
+        #{otherHarm,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectorId != null">
+        #{inspectorId,jdbcType=INTEGER},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainAdvice != null">
+        #{maintainAdvice,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ran.domain.DailyCheckRecord">
+    <!--@mbg.generated-->
+    update daily_check_record
+    <set>
+      <if test="bridgeId != null">
+        bridge_id = #{bridgeId,jdbcType=INTEGER},
+      </if>
+      <if test="inProtectConstruct != null">
+          inprotect_construct = #{inProtectConstruct,jdbcType=VARCHAR},
+      </if>
+      <if test="otherHarm != null">
+        other_harm = #{otherHarm,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectorId != null">
+        inspector_id = #{inspectorId,jdbcType=INTEGER},
+      </if>
+      <if test="checkDate != null">
+        check_date = #{checkDate,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainAdvice != null">
+        maintain_advice = #{maintainAdvice,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ran.domain.DailyCheckRecord">
+    <!--@mbg.generated-->
+      update daily_check_record
+      set bridge_id = #{bridgeId,jdbcType=INTEGER},
+      inprotect_construct = #{inProtectConstruct,jdbcType=VARCHAR},
+      other_harm = #{otherHarm,jdbcType=VARCHAR},
+      inspector_id = #{inspectorId,jdbcType=INTEGER},
+      check_date = #{checkDate,jdbcType=VARCHAR},
+      maintain_advice = #{maintainAdvice,jdbcType=VARCHAR}
+      where daily_check_id = #{dailyCheckId,jdbcType=INTEGER}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2022-07-07-->
+  <select id="selectAllByBridgeId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from daily_check_record
+    where bridge_id=#{bridgeId,jdbcType=INTEGER}
+    order by daily_check_id desc
+    limit #{current,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="countByBridgeId" resultType="int">
+    select
+    count(daily_check_id)
+    from daily_check_record
+    where bridge_id=#{bridgeId,jdbcType=INTEGER}
+  </select>
+
+  <select id="countMaxRecordId" resultType="int">
+    select
+      max(daily_check_id)
+    from daily_check_record
+  </select>
+</mapper>
